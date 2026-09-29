@@ -2,7 +2,7 @@
 
 Landing page for ByteSpace, an online course platform. Built from the Figma design as a frontend assessment.
 
-**Live demo:** comming soon
+**Live demo:** [https://byte-space-web.vercel.app/](https://byte-space-web.vercel.app/)
 
 ## What's included
 
