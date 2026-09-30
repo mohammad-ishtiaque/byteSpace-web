@@ -7,7 +7,7 @@ import Icon from "@/components/ui/Icon";
 import { SORT_OPTIONS } from "@/lib/courses";
 import { cn } from "@/lib/utils";
 
-export default function CourseFilters({ topics, levels, categories }) {
+export default function CourseFilters({ topics = [], levels, categories, showTopics = true }) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -77,15 +77,17 @@ export default function CourseFilters({ topics, levels, categories }) {
         />
       </div>
 
-      <div className="mt-8">
-        <TopicFilter
-          topics={topics}
-          selected={topic}
-          onSelect={(value) => update({ topic: value === topic ? "" : value })}
-          layout="row"
-          showMore={false}
-        />
-      </div>
+      {showTopics && (
+        <div className="mt-8">
+          <TopicFilter
+            topics={topics}
+            selected={topic}
+            onSelect={(value) => update({ topic: value === topic ? "" : value })}
+            layout="row"
+            showMore={false}
+          />
+        </div>
+      )}
     </div>
   );
 }
