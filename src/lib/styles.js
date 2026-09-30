@@ -1,5 +1,12 @@
 import { cn } from "@/lib/utils";
 
+export function floatStyle(index) {
+  return {
+    animationDuration: `${7 + (index % 3) * 1.5}s`,
+    animationDelay: `${index * -1.3}s`,
+  };
+}
+
 export function pillClasses(isActive, className) {
   return cn(
     "rounded-3xl px-4 py-3 text-label-m font-medium transition-colors",
