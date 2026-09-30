@@ -6,6 +6,10 @@ export async function getCourses({ topic, limit } = {}) {
   return limit ? result.slice(0, limit) : result;
 }
 
+export async function getCourseBySlug(slug) {
+  return courses.find((course) => course.slug === slug) ?? null;
+}
+
 export async function getFeaturedCourses({ limit } = {}) {
   return getCourses({ topic: FEATURED_TOPIC, limit });
 }
