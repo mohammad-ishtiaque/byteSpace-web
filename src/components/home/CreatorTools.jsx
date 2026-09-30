@@ -1,6 +1,6 @@
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
-import HappyStudentsCard from "@/components/home/HappyStudentsCard";
+import HappyStudentsCard from "@/components/ui/HappyStudentsCard";
 import RevenueCard from "@/components/home/RevenueCard";
 
 const BENEFITS = ["Share Your Expertise", "Monetize Your Passion", "Flexibility and Autonomy", "Build a Community"];

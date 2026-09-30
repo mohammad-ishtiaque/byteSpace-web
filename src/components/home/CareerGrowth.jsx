@@ -1,7 +1,7 @@
 import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CourseCard from "@/components/course/CourseCard";
-import ProgressCard from "@/components/home/ProgressCard";
+import ProgressCard from "@/components/ui/ProgressCard";
 import { getFeaturedCourses } from "@/services/courses";
 
 const STATS = [

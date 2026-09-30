@@ -7,10 +7,14 @@ export const ROUTES = {
   cart: "/cart",
 };
 
+export const courseUrl = (slug, tab) => (tab ? `${ROUTES.courses}/${slug}/${tab}` : `${ROUTES.courses}/${slug}`);
+
+export const creatorUrl = (slug) => `${ROUTES.creators}/${slug}`;
+
 export const NAV_LINKS = [
   { label: "Home", href: ROUTES.home },
   { label: "Courses", href: ROUTES.courses },
-  { label: "Creators", href: ROUTES.creators },
+  { label: "Creators", href: creatorUrl("purepearl-studio") },
 ];
 
 export const FOOTER_LINKS = [

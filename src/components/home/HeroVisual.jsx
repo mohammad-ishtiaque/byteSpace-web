@@ -1,7 +1,7 @@
 import Image from "next/image";
 import TopicCard from "@/components/home/TopicCard";
-import ProgressCard from "@/components/home/ProgressCard";
-import HappyStudentsCard from "@/components/home/HappyStudentsCard";
+import ProgressCard from "@/components/ui/ProgressCard";
+import HappyStudentsCard from "@/components/ui/HappyStudentsCard";
 
 export default function HeroVisual() {
   return (
