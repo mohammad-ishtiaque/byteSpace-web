@@ -4,7 +4,8 @@ import Icon from "@/components/ui/Icon";
 import Pagination from "@/components/ui/Pagination";
 import CourseFilters from "@/components/course/CourseFilters";
 import CourseGrid from "@/components/course/CourseGrid";
-import CourseSearchForm from "@/components/course/CourseSearchForm";
+import SearchForm from "@/components/ui/SearchForm";
+import { redirect } from "next/navigation";
 import { ROUTES } from "@/lib/constants";
 import { getCategories, getCourseLevels, getCourseTopics, searchCourses } from "@/services/courses";
 
@@ -14,7 +15,8 @@ export const metadata = {
 };
 
 export default async function CoursesPage({ searchParams }) {
-  const { q = "", topic = "", level = "", category = "", sort = "", page } = await searchParams;
+  const { q = "", topic = "", level = "", category = "", sort = "", page, scope } = await searchParams;
+  if (scope === "creators") redirect(q ? `${ROUTES.creators}?q=${encodeURIComponent(q)}` : ROUTES.creators);
   const filters = { q, topic, level, category, sort };
 
   const [result, topics, levels, categories] = await Promise.all([
@@ -34,7 +36,7 @@ export default async function CoursesPage({ searchParams }) {
           >
             Find Your Next Course
           </h1>
-          <CourseSearchForm
+          <SearchForm
             id="course-search"
             defaultValue={q}
             placeholder="Search"
@@ -43,13 +45,13 @@ export default async function CoursesPage({ searchParams }) {
           >
             <label className="relative flex h-12 w-[147px] shrink-0 items-center self-center rounded-3xl bg-accent">
               <span className="sr-only">Search in</span>
-              <select className="h-full w-full cursor-pointer appearance-none bg-transparent pr-12 pl-6 text-label-l font-medium text-shuttle-950 outline-none">
-                <option>Courses</option>
-                <option disabled>Creators (coming soon)</option>
+              <select name="scope" className="h-full w-full cursor-pointer appearance-none bg-transparent pr-12 pl-6 text-label-l font-medium text-shuttle-950 outline-none">
+                <option value="courses">Courses</option>
+                <option value="creators">Creators</option>
               </select>
               <Icon name="chevronDown" className="pointer-events-none absolute right-4 text-shuttle-950" />
             </label>
-          </CourseSearchForm>
+          </SearchForm>
         </Container>
       </section>
 
