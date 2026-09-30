@@ -16,22 +16,22 @@ export default function CourseSidebar({ course, creator, creatorHref }) {
         {course.previewLessons.map((lesson) => (
           <li key={lesson.number} className="flex items-start justify-between gap-4 text-body-m">
             <span className="flex gap-2">
-              <span className="font-medium text-primary">{lesson.number}</span>
+              <span className="font-medium text-shuttle-950">{lesson.number}</span>
               <span className="text-shuttle-950">{lesson.title}</span>
             </span>
-            <span className="shrink-0 text-shuttle-400">{lesson.duration}</span>
+            <span className="shrink-0 text-primary">{lesson.duration}</span>
           </li>
         ))}
       </ol>
       <Link
         href={courseUrl(course.slug, "lessons")}
-        className="mt-3 inline-block text-body-m font-medium text-primary underline-offset-2 hover:underline"
+        className="mt-3 inline-block text-body-m text-shuttle-400 underline-offset-2 hover:text-primary hover:underline"
       >
         {moreVideos} more videos
       </Link>
 
       <div className="mt-6">
-        <p className="font-heading text-title font-semibold">{course.ctaText}</p>
+        <p className="text-body-m text-shuttle-700">{course.ctaText}</p>
         <p className="mt-6 flex items-end">
           <span className="font-heading text-[2rem] leading-[1.2] font-semibold text-primary">${course.price}</span>
           <span className="text-body-m text-muted">/lifetime</span>
