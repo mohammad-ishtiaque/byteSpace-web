@@ -1,4 +1,5 @@
 import { categories, courseLevels, courseTopics, courses } from "@/mocks/courses";
+import { courseDetails } from "@/mocks/courseDetails";
 import { COURSES_PER_PAGE, FEATURED_TOPIC, matchesTopic } from "@/lib/courses";
 
 const sorters = {
@@ -18,9 +19,10 @@ export async function getCourses({ topic, limit } = {}) {
   return limit ? result.slice(0, limit) : result;
 }
 
-export async function searchCourses({ q, topic, level, category, sort, page = 1 } = {}) {
+export async function searchCourses({ q, topic, level, category, creator, sort, page = 1 } = {}) {
   const filtered = courses.filter(
     (course) =>
+      (!creator || course.creator === creator) &&
       matchesQuery(course, q) &&
       matchesTopic(course, topic) &&
       (!level || course.level === level) &&
@@ -41,6 +43,26 @@ export async function searchCourses({ q, topic, level, category, sort, page = 1 
 
 export async function getCourseBySlug(slug) {
   return courses.find((course) => course.slug === slug) ?? null;
+}
+
+export async function getCourseSlugs() {
+  return courses.map((course) => course.slug);
+}
+
+export async function getCourseDetails(slug) {
+  const course = await getCourseBySlug(slug);
+  if (!course) return null;
+
+  const ratings = Object.entries(courseDetails.ratingBreakdown);
+  const reviewCount = ratings.reduce((sum, [, count]) => sum + count, 0);
+  const ratingTotal = ratings.reduce((sum, [stars, count]) => sum + Number(stars) * count, 0);
+
+  return {
+    ...course,
+    ...courseDetails,
+    averageRating: (ratingTotal / reviewCount).toFixed(1),
+    reviewCount,
+  };
 }
 
 export async function getFeaturedCourses({ limit } = {}) {
