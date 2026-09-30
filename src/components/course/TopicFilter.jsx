@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ROUTES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { pillClasses } from "@/lib/styles";
 
 const layouts = {
   wrap: "sm:mx-0 sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0 sm:pb-0 md:gap-x-4 md:gap-y-5",
@@ -18,11 +19,7 @@ export default function TopicFilter({ topics, selected, onSelect, layout = "wrap
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelect(topic)}
-              className={cn(
-                "rounded-3xl px-4 py-3 text-label-m font-medium transition-colors",
-                "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-                isActive ? "bg-accent text-shuttle-950" : "bg-shuttle-50 text-shuttle-700 hover:bg-shuttle-100",
-              )}
+              className={pillClasses(isActive)}
             >
               {topic}
             </button>
