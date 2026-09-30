@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AvatarGroup from "@/components/ui/AvatarGroup";
 import StarIcon from "@/components/ui/StarIcon";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES, creatorUrl } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export default function CourseCard({ course, variant = "default", className }) {
@@ -44,7 +44,13 @@ export default function CourseCard({ course, variant = "default", className }) {
             </Link>
           </h3>
           <p className="text-body-xs text-muted">
-            by <span className="text-primary">{creator}</span>
+            by{" "}
+            <Link
+              href={creatorUrl(course.creatorSlug)}
+              className="relative z-10 text-primary underline-offset-2 hover:underline"
+            >
+              {creator}
+            </Link>
           </p>
         </div>
         <p className="flex shrink-0 items-center text-body-l text-muted">

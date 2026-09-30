@@ -1,6 +1,7 @@
 const STUDENT = (n) => `/images/avatars/student-${n}.webp`;
 
 export const courseDetails = {
+  ctaText: "Ready to Dive In? Enroll Now and Start Building Your Digital Future!",
   subtitle: "Unlock the Power of Digital Creation with Expert Guidance",
   students: 199,
   totalLessons: 112,
@@ -77,7 +78,7 @@ export const courseDetails = {
   reviews: [
     {
       id: 1,
-      name: "PurePearl Studio",
+      name: "Esther Howard",
       role: "UI/UX Designer",
       avatar: STUDENT(1),
       rating: 5,
