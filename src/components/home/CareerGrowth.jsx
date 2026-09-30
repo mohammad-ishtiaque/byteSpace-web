@@ -1,13 +1,15 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import CourseCard from "@/components/course/CourseCard";
+import CountUp from "@/components/ui/CountUp";
 import ProgressCard from "@/components/ui/ProgressCard";
 import { getFeaturedCourses } from "@/services/courses";
 
 const STATS = [
-  { value: "12K", label: "Students" },
-  { value: "70+", label: "Courses" },
-  { value: "16", label: "Creators" },
+  { value: 12, suffix: "K", label: "Students" },
+  { value: 70, suffix: "+", label: "Courses" },
+  { value: 16, label: "Creators" },
 ];
 
 export default async function CareerGrowth() {
@@ -26,13 +28,15 @@ export default async function CareerGrowth() {
           {STATS.map((stat) => (
             <div key={stat.label} className="flex flex-col-reverse">
               <dt className="text-body-l text-shuttle-700">{stat.label}</dt>
-              <dd className="font-heading text-h3 font-semibold text-primary">{stat.value}</dd>
+              <dd className="font-heading text-h3 font-semibold text-primary">
+                <CountUp value={stat.value} suffix={stat.suffix} />
+              </dd>
             </div>
           ))}
         </dl>
       </div>
 
-      <div className="relative mx-auto aspect-[621/552] w-full max-w-[621px]">
+      <Reveal className="relative mx-auto aspect-[621/552] w-full max-w-[621px]">
         <CourseCard
           course={course}
           className="absolute top-0 left-0 w-[373px] origin-top-left max-sm:scale-[0.55]"
@@ -52,9 +56,9 @@ export default async function CareerGrowth() {
           aria-hidden="true"
           width={660}
           height={660}
-          className="pointer-events-none absolute top-[12.1%] left-[65.4%] h-auto w-[34.6%]"
+          className="pointer-events-none absolute animate-float top-[12.1%] left-[65.4%] h-auto w-[34.6%]"
         />
-      </div>
+      </Reveal>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import HappyStudentsCard from "@/components/ui/HappyStudentsCard";
 import RevenueCard from "@/components/home/RevenueCard";
@@ -19,11 +20,11 @@ function CheckIcon() {
 export default function CreatorTools() {
   return (
     <div className="grid items-center gap-12 lg:grid-cols-[541px_1fr] lg:gap-[79px]">
-      <div className="relative order-2 mx-auto aspect-[541/596] w-full max-w-[541px] lg:order-1">
+      <Reveal className="relative order-2 mx-auto aspect-[541/596] w-full max-w-[541px] lg:order-1">
         <RevenueCard
           title="Total Revenue"
           period="July 1-28"
-          amount="$120.29"
+          amount={120.29}
           change="+12$"
           progress={56}
           className="absolute top-[7.4%] left-0 w-[232px] origin-top-left max-sm:scale-[0.6]"
@@ -31,7 +32,7 @@ export default function CreatorTools() {
         <RevenueCard
           title="Year to Date"
           period="2023"
-          amount="$1,200.38"
+          amount={1200.38}
           change="+12$"
           className="absolute top-[32.6%] left-0 w-[134px] origin-top-left max-sm:scale-[0.6]"
         />
@@ -50,9 +51,9 @@ export default function CreatorTools() {
           aria-hidden="true"
           width={770}
           height={770}
-          className="pointer-events-none absolute top-[19.1%] left-[56.4%] h-auto w-[39.7%]"
+          className="pointer-events-none absolute animate-float top-[19.1%] left-[56.4%] h-auto w-[39.7%]"
         />
-      </div>
+      </Reveal>
 
       <div className="order-1 lg:order-2">
         <SectionHeading

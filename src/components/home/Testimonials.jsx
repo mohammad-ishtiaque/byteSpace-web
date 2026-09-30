@@ -1,3 +1,4 @@
+import Reveal from "@/components/ui/Reveal";
 import Container from "@/components/ui/Container";
 import GlowBackground, { GLOW } from "@/components/ui/GlowBackground";
 import TestimonialCard from "@/components/home/TestimonialCard";
@@ -17,7 +18,7 @@ export default async function Testimonials() {
       <GlowBackground glows={TESTIMONIAL_GLOWS} />
 
       <Container>
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-[43px]">
+        <Reveal className="grid gap-6 lg:grid-cols-2 lg:gap-[43px]">
           <h2
             id="testimonials-title"
             className="max-w-[577px] self-end font-heading text-[2rem] leading-[1.2] font-semibold tracking-[-0.01em] sm:text-h2"
@@ -30,13 +31,13 @@ export default async function Testimonials() {
             Explore testimonials that reflect the diverse perspectives of enthusiastic learners and accomplished
             creators.
           </p>
-        </div>
+        </Reveal>
 
         <ul className="mt-12 grid items-start gap-6 md:grid-cols-3 md:gap-10 lg:mt-[72px]">
-          {testimonials.map((testimonial) => (
-            <li key={testimonial.id}>
+          {testimonials.map((testimonial, index) => (
+            <Reveal as="li" key={testimonial.id} delay={index * 100}>
               <TestimonialCard testimonial={testimonial} />
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>

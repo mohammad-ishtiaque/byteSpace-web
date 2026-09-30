@@ -1,3 +1,5 @@
+import CountUp from "@/components/ui/CountUp";
+import ProgressBar from "@/components/ui/ProgressBar";
 import { cn } from "@/lib/utils";
 
 function ChangeChip({ children }) {
@@ -17,14 +19,14 @@ export default function RevenueCard({ title, period, amount, change, progress, c
       <p className="text-[10px] leading-[1.2] text-shuttle-100">{period}</p>
 
       <div className={cn("mt-2 flex", hasProgress ? "items-center justify-between" : "flex-col items-start gap-2")}>
-        <p className="text-2xl leading-8 font-bold">{amount}</p>
+        <p className="text-2xl leading-8 font-bold">
+          <CountUp value={amount} decimals={2} prefix="$" />
+        </p>
         {change && <ChangeChip>{change}</ChangeChip>}
       </div>
 
       {hasProgress && (
-        <div aria-hidden="true" className="mt-2 h-2 rounded-3xl bg-white">
-          <div className="h-full rounded-3xl bg-accent" style={{ width: `${progress}%` }} />
-        </div>
+        <ProgressBar value={progress} trackClassName="bg-white" className="mt-2" />
       )}
     </div>
   );

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CourseCard from "@/components/course/CourseCard";
 import HappyStudentsCard from "@/components/ui/HappyStudentsCard";
+import { floatStyle } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
 const SHAPES = [
@@ -21,14 +22,15 @@ export default function CourseShowcase({ backCourse, frontCourse, className }) {
       <div className="absolute top-[435px] left-[226px]">
         <HappyStudentsCard variant="accent" />
       </div>
-      {SHAPES.map((shape) => (
+      {SHAPES.map((shape, index) => (
         <Image
           key={shape.src}
           src={shape.src}
           alt=""
           width={shape.size}
           height={shape.size}
-          className={cn("pointer-events-none absolute h-auto max-w-none", shape.className)}
+          style={floatStyle(index)}
+          className={cn("pointer-events-none absolute h-auto max-w-none animate-float", shape.className)}
         />
       ))}
     </div>

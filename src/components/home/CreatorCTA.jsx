@@ -1,3 +1,4 @@
+import Reveal from "@/components/ui/Reveal";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import FloatingShapes from "@/components/ui/FloatingShapes";
@@ -18,7 +19,8 @@ export default function CreatorCTA() {
     <section aria-labelledby="cta-title" className="relative overflow-hidden bg-grid py-16 md:py-[85px]">
       <FloatingShapes shapes={CTA_SHAPES} />
 
-      <Container className="relative flex flex-col items-center text-center">
+      <Container className="relative">
+        <Reveal className="flex flex-col items-center text-center">
         <h2
           id="cta-title"
           className="max-w-[710px] font-heading text-[2rem] leading-[1.2] font-semibold tracking-[-0.01em] text-white sm:text-h2"
@@ -33,6 +35,7 @@ export default function CreatorCTA() {
         <Button href={ROUTES.signup} className="mt-10">
           Join as Creator
         </Button>
+        </Reveal>
       </Container>
     </section>
   );

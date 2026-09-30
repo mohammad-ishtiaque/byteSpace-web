@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Reveal from "@/components/ui/Reveal";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { ROUTES } from "@/lib/constants";
@@ -20,18 +21,18 @@ export default async function LearningPaths() {
         />
 
         <ul className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 lg:grid-cols-6 lg:gap-10">
-          {categories.map((category) => (
-            <li key={category.slug}>
+          {categories.map((category, index) => (
+            <Reveal as="li" key={category.slug} delay={index * 60}>
               <Link
                 href={`${ROUTES.courses}?category=${category.slug}`}
-                className="flex aspect-square flex-col items-center justify-center gap-3 rounded-3xl border border-shuttle-200 transition-colors hover:border-primary focus-visible:outline-2 focus-visible:outline-primary"
+                className="flex aspect-square flex-col items-center justify-center gap-3 rounded-3xl border border-shuttle-200 transition duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-md focus-visible:outline-2 focus-visible:outline-primary"
               >
                 <span className="flex rounded-full bg-accent p-3">
                   <Image src={category.icon} alt="" width={36} height={36} />
                 </span>
                 <span className="text-label-l font-medium sm:text-label-xl">{category.name}</span>
               </Link>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </Container>
