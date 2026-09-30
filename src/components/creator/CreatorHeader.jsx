@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CreatorStats from "@/components/creator/CreatorStats";
 
-export default function CreatorHeader({ creator, courseCount }) {
+export default function CreatorHeader({ creator }) {
   return (
     <div>
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
@@ -25,7 +25,12 @@ export default function CreatorHeader({ creator, courseCount }) {
       </div>
       <p className="mt-6 max-w-[902px] text-body-l text-shuttle-100">{creator.bio}</p>
       <div className="mt-10">
-        <CreatorStats products={courseCount} followers={creator.followers} name={creator.name} />
+        <CreatorStats
+          creatorSlug={creator.slug}
+          name={creator.name}
+          products={creator.courseCount}
+          followers={creator.followers}
+        />
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ export default function CourseSidebar({ course, creator, creatorHref }) {
       </Link>
 
       <div className="mt-6">
-        <p className="font-heading text-title font-semibold">{creator?.summary}</p>
+        <p className="font-heading text-title font-semibold">{course.ctaText}</p>
         <p className="mt-6 flex items-end">
           <span className="font-heading text-[2rem] leading-[1.2] font-semibold text-primary">${course.price}</span>
           <span className="text-body-m text-muted">/lifetime</span>
@@ -53,7 +53,7 @@ export default function CourseSidebar({ course, creator, creatorHref }) {
               <p className="text-body-m text-shuttle-400">{creator.role}</p>
             </div>
           </div>
-          <p className="mt-6 text-body-m text-shuttle-700">{creator.summary}</p>
+          <p className="mt-6 text-body-m text-shuttle-700">{course.ctaText}</p>
           <Link
             href={creatorHref}
             className="mt-6 inline-flex h-[35px] items-center rounded-3xl border border-shuttle-200 px-4 text-label-s font-medium transition-colors hover:border-primary hover:text-primary"

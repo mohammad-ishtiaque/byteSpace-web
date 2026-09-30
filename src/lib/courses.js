@@ -2,6 +2,8 @@ export const FEATURED_TOPIC = "Featured";
 
 export const COURSES_PER_PAGE = 9;
 
+export const CREATOR_COURSES_PER_PAGE = 6;
+
 export const SORT_OPTIONS = [
   { value: "", label: "Most relevant" },
   { value: "rating", label: "Highest rated" },

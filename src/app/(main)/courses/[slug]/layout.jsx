@@ -6,7 +6,8 @@ import CourseTabs from "@/components/course/CourseTabs";
 import VideoPreview from "@/components/course/VideoPreview";
 import { creatorUrl } from "@/lib/constants";
 import { getCourseDetails, getCourseSlugs } from "@/services/courses";
-import { getCreatorByCourseName } from "@/services/creators";
+import { getCreatorBySlug } from "@/services/creators";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export async function generateStaticParams() {
   const slugs = await getCourseSlugs();
@@ -24,11 +25,12 @@ export default async function CourseLayout({ children, params }) {
   const course = await getCourseDetails(slug);
   if (!course) notFound();
 
-  const creator = await getCreatorByCourseName(course.creator);
+  const creator = await getCreatorBySlug(course.creatorSlug);
   const creatorHref = creator ? creatorUrl(creator.slug) : null;
 
   return (
     <>
+      <ScrollToTop trigger={slug} />
       <section className="bg-grid">
         <Container className="pt-8 pb-12 md:pt-[52px] lg:pb-[62px]">
           <CourseHero course={course} creatorHref={creatorHref} />

@@ -1,6 +1,10 @@
-import { categories, courseLevels, courseTopics, courses } from "@/mocks/courses";
+import { categories, courseLevels, courseTopics, courses as rawCourses } from "@/mocks/courses";
 import { courseDetails } from "@/mocks/courseDetails";
+import { creators } from "@/mocks/creators";
 import { COURSES_PER_PAGE, FEATURED_TOPIC, matchesTopic } from "@/lib/courses";
+
+const creatorNames = Object.fromEntries(creators.map((creator) => [creator.slug, creator.name]));
+const courses = rawCourses.map((course) => ({ ...course, creator: creatorNames[course.creatorSlug] }));
 
 const sorters = {
   rating: (a, b) => b.rating - a.rating,
@@ -19,22 +23,31 @@ export async function getCourses({ topic, limit } = {}) {
   return limit ? result.slice(0, limit) : result;
 }
 
-export async function searchCourses({ q, topic, level, category, creator, sort, page = 1 } = {}) {
+export async function searchCourses({
+  q,
+  topic,
+  level,
+  category,
+  creatorSlug,
+  sort,
+  page = 1,
+  pageSize = COURSES_PER_PAGE,
+} = {}) {
   const filtered = courses.filter(
     (course) =>
-      (!creator || course.creator === creator) &&
+      (!creatorSlug || course.creatorSlug === creatorSlug) &&
       matchesQuery(course, q) &&
       matchesTopic(course, topic) &&
       (!level || course.level === level) &&
       (!category || course.category === category),
   );
   const sorted = sorters[sort] ? [...filtered].sort(sorters[sort]) : filtered;
-  const totalPages = Math.max(1, Math.ceil(sorted.length / COURSES_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
   const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages);
-  const start = (currentPage - 1) * COURSES_PER_PAGE;
+  const start = (currentPage - 1) * pageSize;
 
   return {
-    courses: sorted.slice(start, start + COURSES_PER_PAGE),
+    courses: sorted.slice(start, start + pageSize),
     total: sorted.length,
     page: currentPage,
     totalPages,

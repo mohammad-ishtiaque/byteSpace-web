@@ -14,7 +14,7 @@ export const creatorUrl = (slug) => `${ROUTES.creators}/${slug}`;
 export const NAV_LINKS = [
   { label: "Home", href: ROUTES.home },
   { label: "Courses", href: ROUTES.courses },
-  { label: "Creators", href: creatorUrl("purepearl-studio") },
+  { label: "Creators", href: ROUTES.creators },
 ];
 
 export const FOOTER_LINKS = [

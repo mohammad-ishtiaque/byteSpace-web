@@ -3,7 +3,6 @@ import { FEATURED_TOPIC } from "@/lib/courses";
 const LEARNERS = [1, 2, 3, 4].map((n) => `/images/avatars/learner-${n}.webp`);
 
 const base = {
-  creator: "purepearl studio",
   level: "Beginner",
   lessons: 17,
   duration: "2 hours 16 mins",
@@ -19,6 +18,7 @@ export const courses = [
   {
     ...base,
     id: 1,
+    creatorSlug: "purepearl-studio",
     slug: "learn-figma-from-basic",
     title: "Learn Figma from Basic",
     image: "/images/courses/course-1.webp",
@@ -29,6 +29,7 @@ export const courses = [
   {
     ...base,
     id: 2,
+    creatorSlug: "purepearl-studio",
     slug: "build-digital-asset",
     title: "Build Digital Asset",
     image: "/images/courses/course-2.webp",
@@ -39,6 +40,7 @@ export const courses = [
   {
     ...base,
     id: 3,
+    creatorSlug: "datawise-lab",
     slug: "the-power-of-big-data",
     title: "the Power of Big Data",
     image: "/images/courses/course-3.webp",
@@ -49,6 +51,7 @@ export const courses = [
   {
     ...base,
     id: 4,
+    creatorSlug: "brightpath-business",
     slug: "balancing-productivity-and-self-care",
     title: "Balancing Productivity and Self-Care",
     image: "/images/courses/course-4.webp",
@@ -59,6 +62,7 @@ export const courses = [
   {
     ...base,
     id: 5,
+    creatorSlug: "brightpath-business",
     slug: "mastering-money-management",
     title: "Mastering Money Management",
     image: "/images/courses/course-5.webp",
@@ -69,6 +73,7 @@ export const courses = [
   {
     ...base,
     id: 6,
+    creatorSlug: "brightpath-business",
     slug: "from-idea-to-startup-success",
     title: "From Idea to Startup Success",
     image: "/images/courses/course-6.webp",
@@ -79,6 +84,7 @@ export const courses = [
   {
     ...base,
     id: 7,
+    creatorSlug: "buzzline-marketing",
     slug: "social-media-marketing-essentials",
     title: "Social Media Marketing Essentials",
     image: "/images/courses/course-6.webp",
@@ -91,6 +97,7 @@ export const courses = [
   {
     ...base,
     id: 8,
+    creatorSlug: "purepearl-studio",
     slug: "design-systems-in-figma",
     title: "Design Systems in Figma",
     image: "/images/courses/course-1.webp",
@@ -103,6 +110,7 @@ export const courses = [
   {
     ...base,
     id: 9,
+    creatorSlug: "datawise-lab",
     slug: "modern-web-development-with-react",
     title: "Modern Web Development with React",
     image: "/images/courses/course-3.webp",
@@ -115,6 +123,7 @@ export const courses = [
   {
     ...base,
     id: 10,
+    creatorSlug: "purepearl-studio",
     slug: "icon-and-illustration-basics",
     title: "Icon and Illustration Basics",
     image: "/images/courses/course-2.webp",
@@ -126,6 +135,7 @@ export const courses = [
   {
     ...base,
     id: 11,
+    creatorSlug: "datawise-lab",
     slug: "data-analysis-with-python",
     title: "Data Analysis with Python",
     image: "/images/courses/course-5.webp",
@@ -138,6 +148,7 @@ export const courses = [
   {
     ...base,
     id: 12,
+    creatorSlug: "purepearl-studio",
     slug: "build-a-productive-workspace",
     title: "Build a Productive Workspace",
     image: "/images/courses/course-4.webp",
@@ -149,6 +160,7 @@ export const courses = [
   {
     ...base,
     id: 13,
+    creatorSlug: "purepearl-studio",
     slug: "photography-for-beginners",
     title: "Photography for Beginners",
     image: "/images/courses/course-1.webp",
@@ -160,6 +172,7 @@ export const courses = [
   {
     ...base,
     id: 14,
+    creatorSlug: "buzzline-marketing",
     slug: "content-marketing-that-works",
     title: "Content Marketing That Works",
     image: "/images/courses/course-5.webp",
@@ -172,6 +185,7 @@ export const courses = [
   {
     ...base,
     id: 15,
+    creatorSlug: "datawise-lab",
     slug: "cloud-basics-for-beginners",
     title: "Cloud Basics for Beginners",
     image: "/images/courses/course-3.webp",
@@ -183,6 +197,7 @@ export const courses = [
   {
     ...base,
     id: 16,
+    creatorSlug: "purepearl-studio",
     slug: "motion-design-and-animation",
     title: "Motion Design and Animation",
     image: "/images/courses/course-2.webp",
