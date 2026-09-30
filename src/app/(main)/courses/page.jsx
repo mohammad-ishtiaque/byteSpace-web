@@ -1,6 +1,6 @@
 import Container from "@/components/ui/Container";
 import EmptyState from "@/components/ui/EmptyState";
-import Icon from "@/components/ui/Icon";
+import Dropdown from "@/components/ui/Dropdown";
 import Pagination from "@/components/ui/Pagination";
 import CourseFilters from "@/components/course/CourseFilters";
 import CourseGrid from "@/components/course/CourseGrid";
@@ -8,6 +8,11 @@ import SearchForm from "@/components/ui/SearchForm";
 import { redirect } from "next/navigation";
 import { ROUTES } from "@/lib/constants";
 import { getCategories, getCourseLevels, getCourseTopics, searchCourses } from "@/services/courses";
+
+const SEARCH_SCOPES = [
+  { value: "courses", label: "Courses" },
+  { value: "creators", label: "Creators" },
+];
 
 export const metadata = {
   title: "Courses",
@@ -43,14 +48,14 @@ export default async function CoursesPage({ searchParams }) {
             keepParams={{ topic, level, category, sort }}
             className="mt-8 max-w-[624px]"
           >
-            <label className="relative flex h-12 w-[147px] shrink-0 items-center self-center rounded-3xl bg-accent">
-              <span className="sr-only">Search in</span>
-              <select name="scope" className="h-full w-full cursor-pointer appearance-none bg-transparent pr-12 pl-6 text-label-l font-medium text-shuttle-950 outline-none">
-                <option value="courses">Courses</option>
-                <option value="creators">Creators</option>
-              </select>
-              <Icon name="chevronDown" className="pointer-events-none absolute right-4 text-shuttle-950" />
-            </label>
+            <Dropdown
+              name="scope"
+              label="Search in"
+              defaultValue="courses"
+              options={SEARCH_SCOPES}
+              variant="accent"
+              submitOnChange
+            />
           </SearchForm>
         </Container>
       </section>
