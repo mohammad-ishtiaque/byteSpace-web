@@ -11,7 +11,12 @@ export const courseDetails = {
     { number: "02", title: "Design Principles for Impacts", duration: "21 mins" },
     { number: "03", title: "Advanced Techniques in Digital Creation", duration: "16 mins" },
   ],
-  includes: ["Learning Resources", "Quality Lesson Videos", "Certificate of Completion", "Private Consultation"],
+  includes: [
+    { label: "Learning Resources", icon: "resources" },
+    { label: "Quality Lesson Videos", icon: "lessonVideo" },
+    { label: "Certificate of Completion", icon: "certificate" },
+    { label: "Private Consultation", icon: "consultation" },
+  ],
   description: [
     "Embark on an enlightening exploration into the world of digital creation with our comprehensive course, \"Build Digital Assets: A Comprehensive Guide.\" This transformative learning experience invites you to delve deep into the intricacies of crafting impactful digital content. From laying the groundwork with foundational concepts to mastering advanced techniques, this guide is meticulously curated to empower you with the skills essential for navigating the dynamic landscape of digital asset creation.",
     "In the initial modules, you'll establish a solid foundation by immersing yourself in the foundational concepts that form the backbone of digital asset creation. Understand the fundamental elements that constitute compelling digital content and gain proficiency in leveraging these elements to communicate effectively in the digital realm.",

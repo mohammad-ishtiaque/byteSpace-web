@@ -24,7 +24,7 @@ export default async function CourseLessonsPage({ params }) {
           {course.modules.map((module) => (
             <li key={module.title} className="flex items-start gap-3">
               <span className="flex size-[72px] shrink-0 items-center justify-center rounded-2xl bg-accent">
-                <Icon name="video" className="size-10 text-shuttle-950" />
+                <Icon name="lessonVideo" className="size-10 text-primary" />
               </span>
               <div>
                 <h3 className="text-label-m font-medium">{module.title}</h3>
