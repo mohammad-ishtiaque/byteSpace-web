@@ -1,3 +1,4 @@
+import ProgressBar from "@/components/ui/ProgressBar";
 import Stars from "@/components/ui/Stars";
 
 export default function RatingSummary({ average, breakdown }) {
@@ -13,12 +14,7 @@ export default function RatingSummary({ average, breakdown }) {
       <ul className="flex flex-1 flex-col gap-1">
         {rows.map(({ stars, count }) => (
           <li key={stars} className="flex items-center gap-4">
-            <span className="h-2 flex-1 rounded-3xl bg-shuttle-50">
-              <span
-                className="block h-full rounded-3xl bg-accent"
-                style={{ width: `${(count / highest) * 100}%` }}
-              />
-            </span>
+            <ProgressBar value={(count / highest) * 100} trackClassName="bg-shuttle-50" className="flex-1" />
             <Stars rating={stars} className="[&_svg]:size-5 sm:[&_svg]:size-6" />
             <span className="w-10 text-right text-body-m text-shuttle-700">{count}</span>
           </li>

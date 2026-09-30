@@ -12,7 +12,7 @@ export default function CourseCard({ course, variant = "default", className }) {
   return (
     <article
       className={cn(
-        "relative flex flex-col rounded-3xl border border-shuttle-200 bg-white p-[15px] transition-shadow hover:shadow-lg",
+        "group relative flex flex-col rounded-3xl border border-shuttle-200 bg-white p-[15px] transition duration-300 hover:-translate-y-1 hover:shadow-lg",
         className,
       )}
     >
@@ -22,7 +22,7 @@ export default function CourseCard({ course, variant = "default", className }) {
           alt=""
           fill
           sizes="(min-width: 1024px) 341px, (min-width: 640px) 50vw, 100vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <ul className="absolute bottom-3 left-3 flex flex-wrap gap-2 sm:gap-3">
           {[`${lessons} Lessons`, duration, `${comments} Comments`].map((item) => (

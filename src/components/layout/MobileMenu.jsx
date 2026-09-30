@@ -28,7 +28,7 @@ export default function MobileMenu() {
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="absolute inset-x-0 top-full z-30 border-t border-white/15 bg-primary px-6 pb-6 pt-4 text-shuttle-50 shadow-lg"
+          className="absolute inset-x-0 top-full z-30 animate-pop-in border-t border-white/15 bg-primary px-6 pb-6 pt-4 text-shuttle-50 shadow-lg"
         >
           <ul className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (

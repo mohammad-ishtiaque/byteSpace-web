@@ -141,7 +141,7 @@ export default function Dropdown({
           aria-label={label}
           onKeyDown={handleListKeyDown}
           className={cn(
-            "absolute top-full z-30 mt-2 min-w-[220px] rounded-2xl border border-shuttle-200 bg-white p-2 text-left shadow-lg",
+            "absolute top-full z-30 mt-2 min-w-[220px] animate-pop-in rounded-2xl border border-shuttle-200 bg-white p-2 text-left shadow-lg",
             align === "right" ? "right-0" : "left-0",
           )}
         >
