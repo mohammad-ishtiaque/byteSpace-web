@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CourseCard from "@/components/course/CourseCard";
-import HappyStudentsCard from "@/components/home/HappyStudentsCard";
+import HappyStudentsCard from "@/components/ui/HappyStudentsCard";
 import { cn } from "@/lib/utils";
 
 const SHAPES = [
