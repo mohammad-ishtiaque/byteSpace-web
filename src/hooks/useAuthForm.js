@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/lib/constants";
+import { safeRedirectPath, saveUser } from "@/lib/session";
 
 export default function useAuthForm({ validate, submit }) {
   const router = useRouter();
@@ -31,8 +32,10 @@ export default function useAuthForm({ validate, submit }) {
     setFormError("");
     setIsSubmitting(true);
     try {
-      await submit(values);
-      router.push(ROUTES.home);
+      const { user } = await submit(values);
+      saveUser(user);
+      const next = new URLSearchParams(window.location.search).get("next");
+      router.push(safeRedirectPath(next, ROUTES.home));
     } catch {
       setFormError("Something went wrong. Please try again.");
       setIsSubmitting(false);

@@ -6,6 +6,7 @@ import CourseFilters from "@/components/course/CourseFilters";
 import CourseGrid from "@/components/course/CourseGrid";
 import CreatorHeader from "@/components/creator/CreatorHeader";
 import { creatorUrl } from "@/lib/constants";
+import { CREATOR_COURSES_PER_PAGE } from "@/lib/courses";
 import { getCategories, getCourseLevels, searchCourses } from "@/services/courses";
 import { getCreatorBySlug, getCreatorSlugs } from "@/services/creators";
 
@@ -29,9 +30,8 @@ export default async function CreatorPage({ params, searchParams }) {
   const filters = { level, category, sort };
   const basePath = creatorUrl(slug);
 
-  const [result, allCourses, levels, categories] = await Promise.all([
-    searchCourses({ ...filters, creator: creator.courseCreatorName, page }),
-    searchCourses({ creator: creator.courseCreatorName }),
+  const [result, levels, categories] = await Promise.all([
+    searchCourses({ ...filters, creatorSlug: slug, page, pageSize: CREATOR_COURSES_PER_PAGE }),
     getCourseLevels(),
     getCategories(),
   ]);
@@ -40,7 +40,7 @@ export default async function CreatorPage({ params, searchParams }) {
     <>
       <section className="bg-grid">
         <Container className="pt-8 pb-16 md:pt-[52px] md:pb-[82px]">
-          <CreatorHeader creator={creator} courseCount={allCourses.total} />
+          <CreatorHeader creator={creator} />
         </Container>
       </section>
 
