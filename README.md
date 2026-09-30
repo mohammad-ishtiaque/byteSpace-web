@@ -1,6 +1,6 @@
 # ByteSpace
 
-Landing page for ByteSpace, an online course platform. Built from the Figma design as a frontend assessment.
+Landing page and login/signup pages for ByteSpace, an online course platform. Built from the Figma design as a frontend assessment.
 
 **Live demo:** [https://byte-space-web.vercel.app/](https://byte-space-web.vercel.app/)
 
@@ -8,6 +8,7 @@ Landing page for ByteSpace, an online course platform. Built from the Figma desi
 
 - Landing page: hero with search, partner logos, course grid with topic filter,
   learning paths, feature sections, creator call-to-action, testimonials, footer
+- Login and signup pages with form validation
 - 404 page
 - Responsive layout (mobile, tablet, desktop)
 
@@ -31,7 +32,8 @@ Open http://localhost:3000.
 ```
 src/
   app/          routes and layouts
-  components/   ui/ (shared), layout/ (navbar, footer), home/, course/
+  components/   ui/ (shared), layout/ (navbar, footer), home/, course/, auth/
+  hooks/        shared form logic
   services/     data access (currently mock data)
   mocks/        fake data shaped like an API response
   lib/          constants and helpers
@@ -43,10 +45,12 @@ src/
   only the functions in `services/` need to change.
 - The design is desktop only; the mobile and tablet layouts are my own.
 - The newsletter button says "Subscribe" instead of "Search" (looks like a typo in the design).
-- The search page, course pages and login/signup are not built yet, so those links show the 404 page.
+- Login and signup are front-end only: the forms are validated in the browser and
+  `services/auth.js` fakes the request. The social buttons show a "coming soon" note.
+- The search page and course pages are not built yet, so those links show the 404 page.
 
 ## What I'd improve with more time
 
 - Build the search page and reuse `CourseCard` there
-- Login and signup pages
+- Connect login and signup to a real auth API
 - Tests for the topic filter

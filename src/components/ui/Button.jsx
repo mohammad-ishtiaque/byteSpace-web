@@ -11,6 +11,7 @@ export default function Button({ href, variant = "primary", className, children,
   const classes = cn(
     "inline-flex items-center justify-center rounded-3xl px-6 py-3 text-label-l font-medium whitespace-nowrap transition-colors",
     "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    "disabled:cursor-not-allowed disabled:opacity-60",
     variants[variant],
     className,
   );

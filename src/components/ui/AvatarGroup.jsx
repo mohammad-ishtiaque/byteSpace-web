@@ -1,8 +1,14 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-
-export default function AvatarGroup({ avatars, extraLabel, size = 32, overlap = 8, className }) {
+export default function AvatarGroup({
+  avatars,
+  extraLabel,
+  size = 32,
+  overlap = 8,
+  extraClassName = "bg-accent text-shuttle-950",
+  className,
+}) {
   return (
     <div className={cn("flex items-center", className)}>
       {avatars.map((src, index) => (
@@ -18,7 +24,10 @@ export default function AvatarGroup({ avatars, extraLabel, size = 32, overlap = 
       ))}
       {extraLabel && (
         <span
-          className="flex shrink-0 items-center justify-center rounded-full bg-accent text-label-xs font-bold text-shuttle-950"
+          className={cn(
+            "flex shrink-0 items-center justify-center rounded-full text-label-xs font-bold",
+            extraClassName,
+          )}
           style={{ width: size, height: size, marginLeft: -overlap }}
         >
           {extraLabel}

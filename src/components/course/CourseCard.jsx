@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import AvatarGroup from "@/components/ui/AvatarGroup";
+import StarIcon from "@/components/ui/StarIcon";
 import { ROUTES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
-export default function CourseCard({ course, className }) {
+export default function CourseCard({ course, variant = "default", className }) {
   const { slug, title, image, creator, lessons, duration, comments, rating, level, learners, extraLearners, price } = course;
+  const isShowcase = variant === "showcase";
 
   return (
     <article
@@ -47,7 +49,11 @@ export default function CourseCard({ course, className }) {
         </div>
         <p className="flex shrink-0 items-center text-body-l text-muted">
           {rating}
-          <Image src="/icons/star-outline.svg" alt="" width={24} height={24} />
+          {isShowcase ? (
+            <StarIcon className="ml-1 size-5 text-accent" />
+          ) : (
+            <Image src="/icons/star-outline.svg" alt="" width={24} height={24} />
+          )}
           <span className="sr-only">out of 5</span>
         </p>
       </div>
@@ -57,7 +63,13 @@ export default function CourseCard({ course, className }) {
           <Image src="/icons/signal.svg" alt="" width={20} height={20} />
           {level}
         </span>
-        <AvatarGroup avatars={learners} extraLabel={`${extraLearners}+`} size={32} overlap={8} />
+        <AvatarGroup
+          avatars={learners}
+          extraLabel={`${extraLearners}+`}
+          size={32}
+          overlap={8}
+          extraClassName={isShowcase ? "bg-shuttle-950 text-white" : undefined}
+        />
       </div>
 
       <p className="mt-4 flex items-end">
