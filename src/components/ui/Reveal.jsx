@@ -34,7 +34,11 @@ export default function Reveal({ as: Tag = "div", delay = 0, className, children
   }, []);
 
   return (
-    <Tag ref={ref} className={cn(states[state], className)} style={delay ? { transitionDelay: `${delay}ms` } : undefined}>
+    <Tag
+      ref={ref}
+      className={cn("animate-fade-up", states[state], className)}
+      style={delay ? { transitionDelay: `${delay}ms`, animationDelay: `${delay}ms` } : undefined}
+    >
       {children}
     </Tag>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import CourseGrid from "@/components/course/CourseGrid";
 import TopicFilter from "@/components/course/TopicFilter";
 import EmptyState from "@/components/ui/EmptyState";
@@ -11,10 +11,14 @@ export default function CourseExplorer({ courses, topics, limit = 6 }) {
   const [selectedTopic, setSelectedTopic] = useState(topics[0]);
   const visibleCourses = courses.filter((course) => matchesTopic(course, selectedTopic)).slice(0, limit);
 
+  function selectTopic(topic) {
+    startTransition(() => setSelectedTopic(topic));
+  }
+
   return (
     <>
       <div className="mx-auto mt-10 max-w-[1086px]">
-        <TopicFilter topics={topics} selected={selectedTopic} onSelect={setSelectedTopic} />
+        <TopicFilter topics={topics} selected={selectedTopic} onSelect={selectTopic} />
       </div>
 
       <div aria-live="polite" className="mt-12 md:mt-20">

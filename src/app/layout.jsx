@@ -1,5 +1,6 @@
 import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import PageTransition from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -26,7 +27,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} ${satoshi.variable}`}>
-      <body>{children}</body>
+      <body>
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }
