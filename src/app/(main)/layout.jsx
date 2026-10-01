@@ -7,7 +7,9 @@ export default function MainLayout({ children }) {
     <>
       <Navbar />
       <main>
-        <ViewTransition>{children}</ViewTransition>
+        <ViewTransition>
+          <div>{children}</div>
+        </ViewTransition>
       </main>
       <Footer />
     </>
