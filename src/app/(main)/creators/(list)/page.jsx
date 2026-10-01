@@ -1,7 +1,7 @@
 import Container from "@/components/ui/Container";
 import EmptyState from "@/components/ui/EmptyState";
 import SearchForm from "@/components/ui/SearchForm";
-import CreatorCard from "@/components/creator/CreatorCard";
+import CreatorGrid from "@/components/creator/CreatorGrid";
 import { ROUTES } from "@/lib/constants";
 import { getCreators } from "@/services/creators";
 
@@ -47,13 +47,7 @@ export default async function CreatorsPage({ searchParams }) {
           {creators.length} creators found
         </p>
         {creators.length > 0 ? (
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-            {creators.map((creator) => (
-              <li key={creator.slug} className="min-w-0">
-                <CreatorCard creator={creator} />
-              </li>
-            ))}
-          </ul>
+          <CreatorGrid creators={creators} />
         ) : (
           <EmptyState
             title="No creators found."
