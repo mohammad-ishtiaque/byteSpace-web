@@ -50,6 +50,8 @@
 
   --animate-float: float 8s ease-in-out infinite;
   --animate-pop-in: pop-in 150ms ease-out;
+  --animate-fade-up: fade-up 500ms ease-out backwards;
+  --animate-fade-in: fade-in 600ms ease-out 150ms backwards;
 
   @keyframes float {
     0%,
@@ -67,6 +69,19 @@
       transform: translateY(-4px);
     }
   }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
 }
 
 @utility bg-grid {
@@ -81,8 +96,12 @@ body {
   @apply bg-white font-sans text-shuttle-950 antialiased;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 ::view-transition-group(*) {
-  animation-duration: 250ms;
+  animation-duration: 400ms;
 }
 
 ::view-transition {

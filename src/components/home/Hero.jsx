@@ -15,7 +15,7 @@ const HERO_SHAPES = [
 export default function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative overflow-hidden bg-grid">
-      <FloatingShapes shapes={HERO_SHAPES} />
+      <FloatingShapes shapes={HERO_SHAPES} eager />
 
       <Container className="relative flex flex-col items-center pt-8 text-center md:pt-12">
         <h1
